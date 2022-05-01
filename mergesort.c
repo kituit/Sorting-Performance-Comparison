@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 void printList(int *list, int size);
 void merge(int *list, int left, int right);
 void mergeSort(int *list, int left, int right);
-void merge2(int *list, int left, int right);
+bool confirmSorted(int *list, int size);
 
 int main(void) {
 
@@ -21,11 +22,8 @@ int main(void) {
         ++i;
     }
 
-    // printList(list, size);
-
     mergeSort(list, 0, size - 1);
 
-    printList(list, size);
 }
 
 void printList(int *list, int size) {
@@ -33,6 +31,15 @@ void printList(int *list, int size) {
         printf("%d ", list[i]);
     }
     printf("\n");
+}
+
+// Confirms list is sorted in ascending order. Returns true if sorted.
+bool confirmSorted(int *list, int size) {
+    for (int i = 0; i < size - 1; ++i) {
+        if (list[i] > list[i + 1]) return false;
+    }
+
+    return true;
 }
 
 // Merge sort list from left index to right index (inclusive)
@@ -51,8 +58,7 @@ void mergeSort(int *list, int left, int right) {
     int mid = (left + right) / 2;
     mergeSort(list, left, mid);
     mergeSort(list, mid + 1, right);
-    // merge(list, left, right);
-    merge2(list, left, right);
+    merge(list, left, right);
 
 }
 
