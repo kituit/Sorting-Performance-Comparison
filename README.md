@@ -2,7 +2,6 @@
 
 Repo includes C implementation's of sorting algorithms to demonstrate performance differences. 
 
-Each implementation 
 
 ## Files
 
